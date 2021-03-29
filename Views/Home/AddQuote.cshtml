@@ -1,0 +1,35 @@
+﻿@{ 
+    ViewData["Title"] = "Add a Quote";
+}
+
+@*Add quote page*@ 
+
+@model FinalMidterm.Models.QuoteResponse
+
+    <h2>Enter a new quote:</h2>
+<form asp-action="AddQuote" method="post">
+    <div>
+        <label asp-for="Quote">*Quote:</label>
+        <input asp-for="Quote" />
+    </div>
+    <div>
+        <label asp-for="Author">*Author:</label>
+        <input asp-for="Author" />
+    </div>
+    <div>
+        <label asp-for="Date">*Date:</label>
+        <input asp-for="Date" />
+    </div>
+    <div>
+        <label asp-for="Subject">Subject:</label>
+        <input asp-for="Subject" />
+    </div>
+    <div>
+        <label asp-for="Citation">Citation:</label>
+        <input asp-for="Citation" />
+    </div>
+    <br />
+    <p>* - Indicates a required field.</p>
+    <button type="submit">Add your quote</button>
+    <div asp-validation-summary="All"></div>
+</form>

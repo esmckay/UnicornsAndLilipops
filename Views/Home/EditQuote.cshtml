@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Edit Quote:";
+}
+
+@model QuoteResponse
+
+<br />
+<h4>Make Changes to This Quote</h4>
+<br />
+<form asp-action="SaveChanges" method="post">
+
+    <!--Hidden input for keeping track of the quoteid - know which movie to overwrite-->
+    <input type="hidden" value="@Model.QuoteID" name="quoteid" />
+
+    <label asp-for="Quote">Quote: </label>
+    <input asp-for="Quote" value="@Model.Quote" />
+    <br />
+
+    <label asp-for="Author">Author: </label>
+    <input asp-for="Author" value="@Model.Author" />
+    <br />
+
+    <label asp-for="Date">Date: </label>
+    <input asp-for="Date" value="@Model.Date" />
+    <br />
+
+    <label asp-for="Subject">Subject: </label>
+    <input asp-for="Subject" value="@Model.Subject" />
+    <br />
+
+    <label asp-for="Citation">Citation: </label>
+    <input asp-for="Citation" value="@Model.Citation" />
+   
+    <!--Returns descriptive info about validation errors-->
+    <div asp-validation-summary="All"></div>
+    <br /><br />
+
+    <button type="submit">Save Changes</button>
+</form>

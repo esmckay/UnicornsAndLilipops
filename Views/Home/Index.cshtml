@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Quote List";
+}
+
+@model IEnumerable<QuoteResponse>
+@*list of movies*@
+<div>
+    <h2>Here are the quotes in our database:</h2>
+    <br />
+
+    <table>
+        @*header*@
+        <thead class="text-center">
+            <tr class="text-center">
+                <th width="14%">Quote</th>
+                <th width="14%">Author</th>
+                <th width="14%">Date</th>
+                <th width="14%">Subject</th>
+                <th width="14%">Citation</th>
+                <th width="14%"></th>
+                <th width="14%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @*for loop that loops through the quote entries*@
+            @foreach (QuoteResponse x in Model)
+            {
+
+                <tr>
+
+                    <td class="text-center">@x.Quote</td>
+                    <td class="text-center">@x.Author</td>
+                    <td class="text-center">@x.Date.ToShortDateString()</td>
+                    <td class="text-center">@x.Subject</td>
+                    <td class="text-center">@x.Citation</td>
+
+
+                    @*edit quote function that sends you to a separate form to update the info*@
+                    <td>
+                        <form method="post" asp-action="EditQuote">
+                            <input type="hidden" name="quoteid" value="@x.QuoteID" />
+                            <button type="submit">Edit</button>
+                        </form>
+                    </td>
+
+                    @*delete quote button that deletes the movie out of the database*@
+                    <td>
+                        <form method="post" asp-action="DeleteQuote">
+                            <input type="hidden" name="quoteid" value="@x.QuoteID" />
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    
+</div>
